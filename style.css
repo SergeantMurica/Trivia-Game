@@ -1,79 +1,83 @@
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
+    background: linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    margin: 0;
     text-align: center;
 }
 
+/* Container that holds the content */
 .container {
-    background: white;
-    border: solid blue;
-    border-radius: 10px;
+    background: #f9f9f9;
+    border: 2px solid #4a90e2;
+    border-radius: 12px;
     width: 90%;
     max-width: 750px;
-    box-shadow: 10px 40px 20px rgba(0, 0, 0, 0.3);
-    padding: 25px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 30px;
 }
 
+/* Button styling */
 button {
-    padding: 5px;
-    margin: 10px;
-    background-color: blue;
-    color: aliceblue;
-    border: solid aliceblue;
-    border-radius: 5px;
+    padding: 12px 20px;
+    margin: 15px 0;
+    background-color: #4a90e2;
+    color: #fff;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Button hover effect */
 button:hover {
-    background-color: rgb(18, 18, 219);
-    color: rgb(163, 163, 163);
+    background-color: #0065cc;
+    border: 2px solid #0065cc;
+    color: #e0f7ff;
+    transform: translateY(-3px);
 }
 
+/* Result text styling */
 #result {
     margin-top: 20px;
-    font-size: medium;
-    font-weight: 900;
-    color: blue;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4a90e2;
 }
 
+/* Score box styling */
 #score {
     position: absolute;
     top: 15px;
-    object-fit: cover;
+    right: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #4a90e2;
+    background-color: #e8f3ff;
+    padding: 10px;
+    border-radius: 8px;
 }
 
-.choice-button {
-    display: block;
-    padding: 10px 20px;
-    margin: 10px auto;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        max-width: 95%;
+    }
 
-.choice-button:hover {
-    background-color: #0056b3;
-}
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
 
-.restart-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
+    #result {
+        font-size: 16px;
+    }
 }
-
-.restart-button:hover {
-    background-color: #218838;
-}
-
