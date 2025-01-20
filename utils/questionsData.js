@@ -222,6 +222,11 @@ const questionsData = [
         correctAnswer: "Femur",
         incorrectAnswers: ["Tibia", "Fibula", "Humerus"],
     },
+    {
+        question: "In which year was the Theory of General Relativity published?",
+        correctAnswer: "1915",
+        incorrectAnswers: ["1905", "1921", "1898"],
+    },
 ];
 
 

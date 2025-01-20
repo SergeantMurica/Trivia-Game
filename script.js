@@ -1,68 +1,75 @@
 import questionsData from './utils/questionsData.js';
 
-let questions = [];
 let currentQuestionIndex = 0;
-let currentChoices;
-let correctAnswer;
 let score = 0;
 
-function loadQuestions() {
-    if (Array.isArray(questionsData) && questionsData.length > 0) {
-        questions = questionsData;
-    } else {
-        console.error("Questions data is invalid or empty.");
-        alert("Failed to load questions. Please try again later.");
-    }
-}
-
+// Function to display the current question and answer choices
 function displayQuestion() {
-    if (questions.length === 0) return;
+    document.getElementById('score').innerHTML = `Current Score: ${score}`;
+    const questionContainer = document.getElementById('question');
+    const choicesContainer = document.getElementById('choices');
 
-    document.getElementById("score").innerHTML = "Current Score: " + score;
-    const currentQuestion = questions[currentQuestionIndex];
-    document.getElementById("question").innerHTML = currentQuestion.question;
+    // Clear previous content
+    questionContainer.innerHTML = "";
+    choicesContainer.innerHTML = "";
 
-    currentChoices = [currentQuestion.correctAnswer].concat(
-        currentQuestion.incorrectAnswers
-    );
-    correctAnswer = currentQuestion.correctAnswer;
-    currentChoices.sort(() => Math.random() - 0.5);
+    // Display the question
+    const question = questionsData[currentQuestionIndex];
+    questionContainer.innerHTML = question.question;
 
-    for (let i = 0; i < 4; i++) {
-        const btn = document.getElementById(`choice${i + 1}`);
-        btn.innerHTML = currentChoices[i];
-        btn.value = currentChoices[i];
-    }
+    // Shuffle choices and create buttons dynamically
+    const choices = [question.correctAnswer, ...question.incorrectAnswers].sort(() => Math.random() - 0.5);
+
+    choices.forEach(choice => {
+        const button = document.createElement('button');
+        button.innerHTML = choice;
+        button.className = "choice-button"; // Add optional styling
+        button.onclick = () => checkAnswer(choice);
+        choicesContainer.appendChild(button);
+    });
 }
 
-function nextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        displayQuestion();
-    } else {
-        document.getElementById("result").innerHTML = "Quiz Completed!";
-    }
-}
+// Function to check the selected answer
+function checkAnswer(selectedChoice) {
+    const question = questionsData[currentQuestionIndex];
 
-function checkAnswer(button) {
-    if (questions.length === 0) return;
-
-    if (button.innerHTML === questions[currentQuestionIndex].correctAnswer) {
-        document.getElementById("result").innerHTML = "Correct!";
+    if (selectedChoice === question.correctAnswer) {
+        document.getElementById('result').innerHTML = "Correct!";
         score++;
     } else {
-        document.getElementById("result").innerHTML = "Incorrect!";
-        score--;
+        document.getElementById('result').innerHTML = "Incorrect!";
     }
-    nextQuestion();
-}
 
-function initializeQuiz() {
-    loadQuestions();
-    if (questions.length > 0) {
+    // Move to the next question
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questionsData.length) {
         displayQuestion();
+    } else {
+        gameOver();
     }
 }
 
-initializeQuiz();
+// Function to display the game over screen
+function gameOver() {
+    document.getElementById('question').innerHTML = "Game Over!";
+    document.getElementById('result').innerHTML = `Final Score: ${score}`;
+    document.getElementById('choices').innerHTML = ""; // Clear the buttons
 
+    // Create a Restart button
+    const restartButton = document.createElement('button');
+    restartButton.innerHTML = "Restart Game";
+    restartButton.onclick = restartGame; // Attach click event
+    restartButton.className = "restart-button"; // Add optional styling
+    document.getElementById('result').appendChild(restartButton); // Add button to the result area
+}
+
+// Function to restart the game
+function restartGame() {
+    score = 0;
+    currentQuestionIndex = 0;
+    document.getElementById('result').innerHTML = ""; // Clear result area
+    displayQuestion(); // Start the quiz again
+}
+
+// Initialize the quiz
+displayQuestion();

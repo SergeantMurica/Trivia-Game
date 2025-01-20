@@ -44,3 +44,36 @@ button:hover {
     top: 15px;
     object-fit: cover;
 }
+
+.choice-button {
+    display: block;
+    padding: 10px 20px;
+    margin: 10px auto;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.choice-button:hover {
+    background-color: #0056b3;
+}
+
+.restart-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.restart-button:hover {
+    background-color: #218838;
+}
+
