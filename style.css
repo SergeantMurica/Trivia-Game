@@ -1,7 +1,6 @@
-/* General body styling */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
+    background: linear-gradient(-120deg, rgba(200, 249, 200, 100), rgba(0, 101, 204, 100));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,10 +9,9 @@ body {
     text-align: center;
 }
 
-/* Container that holds the content */
 .container {
-    background: #f9f9f9;
-    border: 2px solid #4a90e2;
+    background: #4a90e2;
+    border: 2px solid #f9f9f9;
     border-radius: 12px;
     width: 90%;
     max-width: 750px;
@@ -21,13 +19,12 @@ body {
     padding: 30px;
 }
 
-/* Button styling */
 button {
     padding: 12px 20px;
     margin: 15px 0;
-    background-color: #4a90e2;
-    color: #fff;
-    border: 2px solid #4a90e2;
+    background-color: #f9f9f9;
+    color: #4a90e2;
+    border: 2px solid #f9f9f9;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
@@ -36,36 +33,33 @@ button {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Button hover effect */
 button:hover {
     background-color: #0065cc;
-    border: 2px solid #0065cc;
+    border: 2px solid #e0f7ff;
     color: #e0f7ff;
     transform: translateY(-3px);
 }
 
-/* Result text styling */
 #result {
     margin-top: 20px;
     font-size: 18px;
     font-weight: 600;
-    color: #4a90e2;
+    color: #f9f9f9;
 }
 
-/* Score box styling */
 #score {
     position: absolute;
     top: 15px;
     right: 30px;
     font-size: 20px;
     font-weight: 600;
-    color: #4a90e2;
-    background-color: #e8f3ff;
+    color: #f9f9f9;
+    background-color: #4a90e2;
+    border: 2px solid #f9f9f9;
     padding: 10px;
     border-radius: 8px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
     .container {
         padding: 20px;
